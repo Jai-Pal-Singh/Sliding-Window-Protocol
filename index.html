@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Sliding Window Protocol Simulator
+    </title>
+   <!-- <link rel="stylesheet" href="./css/SlidingWindow.css" />-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+
+<body style="background-color: #F2F2F2">
+        <div class="container-fluid">
+            <div class="row justify-content-md-center"style="margin-top:15px;">
+               <b>Sliding Window Protocol</b>
+            </div>
+        </div>
+        <hr>
+        <div class="container-fluid">
+                <form method="GET" action="#">
+                        <div class="row justify-content-md-center">
+                            <div class="form-group col col-md-1.5">
+                                <input type="button" class="form-control align-middle" value="Start" id="startStopButton"style="margin-top:20px;margin-bottom:0px;"onclick="startAnimation();">
+                            </div>
+                            <div class="form-group col col-md-1.5">
+                                <input type="button" class="form-control" value="Reset" id="resetButton"style="margin-top:20px;margin-bottom:0px;" onclick="location.reload(true);">
+                            </div>
+                            <div class="form-group col col-md-3"style="margin-bottom:0px;">
+                                <label for="windowSize">Window Size</label>
+                                <input type="number" class="form-control" id="sws" type="number" oninput="checkParameters(this,9);" value="5" min="1" max="10" />
+                            </div>
+                            <div class="form-group col col-md-3"style="margin-bottom:0px;">
+                                <label for="transmission-delay-input">End-to-End Delay (in milisec)</label>
+                                <input type="number" class="form-control" id="e2ed" type="number" oninput="checkParameters(this,6000);" value="3000" min="1000" max="6000"/>
+                            </div>
+                            <div class="form-group col col-md-3"style="margin-bottom:0px;">
+                                <label for="timeout-input">Timeout (in milisec)</label>
+                                <input type="number" class="form-control" id="timeout" type="number" oninput="checkParameters(this,10000);" value="6000" min="1" max="10000"/>
+                            </div>
+                        </div>
+                        
+                    </form>
+        </div>
+        <hr>
+        <div class="container-fluid"style="width: 100%; overflow-x: scroll;">
+                
+                    <canvas id="simulation"style="height: 368px ;width: 4025px;overflow-x: scroll;"onload="drawFrames();" resize>
+                    </canvas>
+               
+        </div>
+        <hr>
+        <div class="container-fluid" >
+                <div class="row justify-content-md-center">
+                    <div class="form-group col col-md-0.1"id="buffered"style="background-color:aquamarine;width:2px;height:20px;border:1px solid #000;margin-bottom:0px;"></div>
+                    <div class="form-group col col-md-2"style="margin-bottom:0px;">
+                        <label style="margin-bottom:0px;">Buffered</label>
+                    </div>
+                    <div class="form-group col col-md-0.1"id="noData"style="background-color:#ffffff;width:5px;height:20px;border:1px solid #000;margin-bottom:0px;"></div>
+                    <div class="form-group col col-md-2"style="margin-bottom:0px;">
+                        <label style="margin-bottom:0px;">No Data Received</label>
+                    </div>              
+                    <div class="form-group col col-md-0.1"id="received"style="background-color:dodgerblue;width:5px;height:20px;border:1px solid #000;margin-bottom:0px;"></div>
+                    <div class="form-group col col-md-2"style="margin-bottom:0px;">
+                        <label style="margin-bottom:0px;">Received</label>
+                    </div>           
+                    <div class="form-group col col-md-0.1"id="acknowledgment"style="background-color:#008000;width:5px;height:20px;border:1px solid #000;margin-bottom:0px;"></div>
+                    <div class="form-group col col-md-2"style="margin-bottom:0px;">
+                        <label style="margin-bottom:0px;">Acknowledgment</label>
+                    </div>                  
+                    <div class="form-group col col-md-0.1"id="ackReceived"style="background-color:#ffff00;width:5px;height:20px;border:1px solid #000;margin-bottom:0px;"></div>
+                    <div class="form-group col col-md-2"style="margin-bottom:0px;">
+                        <label style="margin-bottom:0px;">Ack Received</label>
+                    </div>                   
+                </div>
+        </div>
+        <hr>
+</body>
+        <script type="text/javascript" src="js/paper.js"></script>
+        <script type="text/javascript" src="js/slidingJavaScript.js"></script>
+        <script type="text/paperscript" src="js/slidingPaperScript.js" canvas="simulation" async></script>
+        <script> function myFunction(){ window.location.reload(true);}</script>
+</html>
